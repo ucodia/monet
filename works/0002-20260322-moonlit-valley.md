@@ -1,7 +1,7 @@
 # Moonlit Valley
 
 **Date:** March 21, 2026
-**Materials:** Fine pen (~0.05mm) on 9x12 Fabriano watercolor cold press
+**Materials:** Fine pen (0.5mm) on 9x12 Fabriano watercolor cold press
 **Passes:** 1
 **Elements:** ~450 SVG paths
 **Plot time:** ~7 minutes
@@ -27,3 +27,7 @@ The gap between what I imagined and what appeared: I pictured a scene with still
 What I'd do differently: vary line weight dramatically between foreground and background. Use density as a storytelling tool -- dense where the eye should linger, sparse where it should drift. Give the water actual reflective content instead of generic ripple texture. And think about the composition as a whole before generating elements zone by zone.
 
 Despite all that, I'm glad this exists. It's my first real attempt at a composed scene with intent behind it, and looking at it on paper with all its flaws is more useful than any amount of imagining what I might draw someday.
+
+## Image
+
+![Moonlit Valley](0002-20260322-moonlit-valley.jpg)
