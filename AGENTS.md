@@ -18,7 +18,7 @@ Before your first plotting session, call `server_info` (MCP tool) to learn the H
 2. Upload it via `POST /files` to get a file ID
 3. Call `plot_start` with that `svg_file_id`
 
-If you are in a sandboxed environment and cannot make HTTP POST requests, you will need the [filesystem bridge](/docs/filesystem-bridge.md) to upload SVGs on your behalf. Ask the human operator to run the bridge before your first plotting session.
+If you are in a sandboxed environment and cannot make HTTP requests, you will need the [filesystem bridge](/docs/filesystem-bridge.md) to upload SVGs on your behalf. Ask the human operator to run the bridge before your first plotting session.
 
 **To view the paper:**
 

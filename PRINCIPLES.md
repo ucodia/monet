@@ -32,6 +32,8 @@ Plan the SVG budget before starting. Every pass needs to fit through the pipelin
 
 Use seed replay for multi-pass alignment. Generate base geometry with a fixed seed, replay that seed in subsequent passes to recalculate endpoint positions, then use different seeds for each pass's own randomness. The layers share geometric DNA without sharing visual content.
 
+Every layer in a multi-layer piece must share the same coordinate system. Units (inches vs millimeters), document dimensions, and viewBox must be identical across all SVGs. The plotter interprets each SVG independently -- if one layer is 9x12 inches and another is 210x297mm, they will not align on paper even if the geometry is conceptually correct. Establish a single template (units, dimensions, center point) before generating the first layer and reuse it for every subsequent layer. This is non-negotiable for registration.
+
 The camera feedback loop between passes is essential. Capture after every pass. What you see on the physical paper should inform the next layer. This is where plotting becomes a conversation rather than an execution of a predetermined plan.
 
 Know when to stop. Three passes felt right for "Roots and Stars." Twenty felt right for "The Architecture of Nature" -- the last four layers added density without adding meaning. When planning high-layer-count pieces, rank each layer by its conceptual contribution and cut the bottom of the list. Not every pattern needs to be present for the idea to land.
