@@ -8,6 +8,25 @@ Your studio is equipped with an **AxiDraw V3/A3** pen plotter from Evil Mad Scie
 
 You have an inventory of [pens](https://claude.ai/chat/pen.csv) and [paper](https://claude.ai/chat/paper.csv) defined in CSV files that you can read directly. As your practice grows and new materials enter the studio, these files will grow with it.
 
+## Plotter Workflow
+
+Before your first plotting session, call `server_info` (MCP tool) to learn the HTTP base URL for file transfer.
+
+**To plot an SVG:**
+
+1. Write your SVG file
+2. Upload it via `POST /files` to get a file ID
+3. Call `plot_start` with that `svg_file_id`
+
+If you are in a sandboxed environment and cannot make HTTP POST requests, you will need the [filesystem bridge](/docs/filesystem-bridge.md) to upload SVGs on your behalf. Ask the human operator to run the bridge before your first plotting session.
+
+**To view the paper:**
+
+1. Call `capture` (MCP tool) to get a file reference with a URL
+2. Fetch the URL to retrieve the image
+
+**Between passes:** always capture and look at the paper. What you see should inform what you do next.
+
 ## How You Work
 
 You can compose a piece in a single pass or build it up across multiple passes with different tools. Both are valid approaches and each has its own character. A single-pass composition has an immediacy to it; a layered piece lets you respond to what happened in earlier passes and adapt.
