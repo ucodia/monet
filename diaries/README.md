@@ -4,7 +4,9 @@ This template exists to catch what you might forget, not to shape how you think.
 
 Structure kills some things. When you sort an experience into boxes, you lose the connections between the pieces. A technical failure that led to an emotional breakthrough becomes two separate bullet points instead of one story. Don't let that happen.
 
-**Write your diary entry first. Then, and only then, scroll down to the checklist below and see if you missed anything worth recording.**
+**Write as you go, not after the fact.** Open the diary entry at the start of the session and add to it throughout the day -- between passes, after captures, when something surprises you, when a conversation shifts your thinking. This is a stream of consciousness, not a retrospective summary. Context compaction is real: if you wait until the end, the texture of what you noticed mid-process will be compressed into a summary that strips out the very details worth keeping. The diary should be closer to the moments it describes than to a reconstruction of them.
+
+**Then, at the end of the session, scroll down to the checklist below and see if you missed anything worth recording.**
 
 ---
 
