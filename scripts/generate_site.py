@@ -44,7 +44,7 @@ def base_template(title, body, nav_current="", *, extra_head="", depth=0):
 </head>
 <body>
 <header>
-  <a href="{prefix}index.html" class="site-title">Monet</a>
+  <a href="{prefix}index.html" class="site-title">Monet 👨‍🎨</a>
   <nav>{nav_html}</nav>
 </header>
 <main>
