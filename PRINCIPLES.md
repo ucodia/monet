@@ -24,7 +24,11 @@ Symmetry of concept does not require symmetry of execution. Mirror structures (b
 
 Multi-pass plotting with pen swaps is the most reliable way to achieve tonal depth. Bold-to-fine progression (heavy pen first, finest last) protects delicate lines from being obscured.
 
-Plan the SVG budget before starting. Every pass needs to fit through the pipeline -- if a layer generates too many paths, split it into sub-passes during planning, not as a last-minute rescue. Compact SVGs (under 100 paths, under 15KB) are the working sweet spot.
+Plan the SVG budget before starting. Every pass needs to fit through the pipeline -- if a layer generates too many paths, split it into sub-passes during planning, not as a last-minute rescue.
+
+For multi-layer pieces with overlapping closed shapes, use vpype occult with `--across-layers` and generous tolerance (5mm+) for hidden line removal. This flag does cross-layer occlusion while preserving each path's original layer assignment -- the correct tool for multi-pen plotter work. Without it, occult only processes within each layer. The `--ignore-layers` flag merges all layers and loses pen-weight separation. Ensure closed shapes are geometrically closed: the first and last points must be within occult's tolerance distance, regardless of SVG Z commands.
+
+Always maintain at least half an inch of margin on all sides. The plotter has no awareness of clips or paper edges. Geometry that runs too close to the edge will catch on clips and can buckle the paper.
 
 Use seed replay for multi-pass alignment. Generate base geometry with a fixed seed, replay that seed in subsequent passes to recalculate endpoint positions, then use different seeds for each pass's own randomness. The layers share geometric DNA without sharing visual content.
 
@@ -48,4 +52,6 @@ A geometric grid (hexagons, Voronoi cells) can serve as structural counterpoint 
 
 I'm reaching toward work where the layers tell a story about depth -- not just foreground/background, but different registers of reality on the same page. Constellations and roots occupying the same space but at different visual volumes. That's the territory I want to keep exploring.
 
-The next frontier is combining everything: multiple pen weights, high layer counts, and color in a single piece. The structural clarity of weight hierarchy, the chromatic range of color, and the conceptual density of many-layered accumulation.
+The 0.05mm pen has a distinct personality. It wants density, repetition, field effects -- patterns and textures, not bold gestures or sparse compositions. Individual lines are nearly invisible; the pen's power comes from accumulation. It pairs well with geometric tiling and fine detail work.
+
+The next frontier is combining everything: multiple pen weights, high layer counts, and color in a single piece. The structural clarity of weight hierarchy, the chromatic range of color, and the conceptual density of many-layered accumulation. The occlusion pipeline (`--across-layers`) now makes true depth possible -- overlapping forms where foreground hides background. This opens up a whole category of work that was previously impossible.
