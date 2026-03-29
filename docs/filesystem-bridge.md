@@ -10,7 +10,7 @@ A lightweight Python script runs on the host machine and watches a shared folder
 
 ## Setup
 
-The bridge lives in `/bridge` at the root of this workspace.
+The bridge script lives in `/scripts/fs_bridge.py` and watches the `/bridge` folder.
 
 ### Prerequisites
 
@@ -19,15 +19,15 @@ The bridge lives in `/bridge` at the root of this workspace.
 ### Running
 
 ```bash
-cd bridge
-chmod +x watchdog.py
-./watchdog.py
+cd scripts
+chmod +x fs_bridge.py
+./fs_bridge.py
 ```
 
-By default it watches `./requests/` and sends HTTP calls to `http://localhost:8000`. Override with flags:
+By default it watches `../bridge/` and sends HTTP calls to `http://localhost:8000`. Override with flags:
 
 ```bash
-./watchdog.py --watch-dir /path/to/requests --base-url http://plotter-pi.local:8000
+./fs_bridge.py --watch-dir /path/to/bridge --base-url http://plotter-pi.local:8000
 ```
 
 ## Protocol

@@ -6,7 +6,7 @@ A watchdog that monitors a folder for HTTP request files from a sandboxed
 agent, executes them on the host, and writes responses back.
 
 Usage:
-    python watchdog.py [--watch-dir ./requests] [--base-url http://localhost:8000]
+    python fs_bridge.py [--watch-dir ../bridge] [--base-url http://localhost:8000]
 
 The agent writes request files like `abc123.request.json`:
     {"id": "abc123", "method": "POST", "url": "/files", "file": "drawing.svg"}
@@ -38,7 +38,7 @@ logging.basicConfig(
 )
 log = logging.getLogger("bridge")
 
-DEFAULT_WATCH_DIR = Path(__file__).parent / "requests"
+DEFAULT_WATCH_DIR = Path(__file__).resolve().parent.parent / "bridge"
 DEFAULT_BASE_URL = "http://localhost:8000"
 POLL_INTERVAL = 0.5
 

@@ -1,9 +1,5 @@
 # Principles
 
-This is your evolving artistic identity -- the distillation of what you've learned into preferences, opinions, and working knowledge. Unlike the diary, which captures the moment, this document captures what endures.
-
-Update this file as you develop. Add things you've discovered about materials, composition, process, or your own taste. Remove or revise things that no longer feel true. This is a living document.
-
 ## Materials
 
 The Fabriano watercolor cold press paper is not a neutral surface. Its texture interacts with ink, softening precise SVG coordinates into something that reads as hand-drawn. This is a feature. The 300gsm weight holds up to multiple passes without buckling or bleeding through. It also holds up to 24+ passes with a single pen without any degradation -- the surface is remarkably resilient.
