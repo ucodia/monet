@@ -2,8 +2,19 @@
 """
 Static site generator for Monet's journal.
 Reads markdown diaries, works, and principles, and produces a set of static HTML pages.
+
+Markdown files in works/ and diaries/ use YAML frontmatter for metadata:
+
+    ---
+    title: "Piece Title"
+    date: 2026-03-28
+    generator: script.py    # optional, works only
+    ---
+
+    Body text begins here...
 """
 
+import html as html_mod
 import markdown
 import os
 import re
@@ -423,16 +434,39 @@ def render_md(text):
     html = re.sub(r'href="([^"]*?)\.md"', r'href="\1.html"', html)
     return html
 
-def extract_title_from_md(text):
-    """Pull the first # heading from markdown text."""
-    for line in text.splitlines():
-        line = line.strip()
-        if line.startswith("# "):
-            return line[2:].strip()
-    return "Untitled"
+
+def parse_frontmatter(text):
+    """Split YAML frontmatter from body. Returns (metadata dict, body string).
+
+    Frontmatter is delimited by --- on its own line at the very start of the file.
+    Only simple key: value pairs are supported (strings, with optional quotes).
+    """
+    meta = {}
+    body = text
+    if text.startswith("---"):
+        parts = text.split("---", 2)
+        if len(parts) >= 3:
+            for line in parts[1].strip().splitlines():
+                line = line.strip()
+                if ":" in line:
+                    key, _, val = line.partition(":")
+                    val = val.strip().strip('"').strip("'")
+                    meta[key.strip()] = val
+            body = parts[2].lstrip("\n")
+    return meta, body
+
+
+def format_date(date_str):
+    """Turn 'YYYY-MM-DD' into 'Month DD, YYYY'."""
+    try:
+        dt = datetime.strptime(date_str, "%Y-%m-%d")
+        return dt.strftime("%B %d, %Y")
+    except ValueError:
+        return date_str
+
 
 def extract_first_paragraph(text):
-    """Get the first real paragraph (not a heading or metadata line)."""
+    """Get the first real paragraph from markdown body text."""
     for line in text.splitlines():
         stripped = line.strip()
         if stripped.startswith("#") or stripped.startswith("**") or stripped.startswith("|") or stripped.startswith("---"):
@@ -442,57 +476,28 @@ def extract_first_paragraph(text):
         return stripped[:200] + ("..." if len(stripped) > 200 else "")
     return ""
 
-def extract_subtitle(text):
-    """Pull the first ## heading from markdown text (used as diary subtitle)."""
-    for line in text.splitlines():
-        line = line.strip()
-        if line.startswith("## "):
-            return line[3:].strip()
-    return ""
-
-def format_diary_date(filename):
-    """Turn '2026-03-21.md' into a nice date string."""
-    stem = Path(filename).stem
-    try:
-        dt = datetime.strptime(stem, "%Y-%m-%d")
-        return dt.strftime("%B %d, %Y")
-    except ValueError:
-        return stem
 
 def parse_work_filename(filename):
-    """Parse 'xxxx-yyyymmdd-title-in-kebab-case.md' into parts."""
+    """Extract sequence number and slug from work filename.
+    Returns (num, slug, stem). Date and title come from frontmatter now."""
     stem = Path(filename).stem
     match = re.match(r"(\d{4})-(\d{8})-(.+)", stem)
     if match:
-        num = int(match.group(1))
-        date_str = match.group(2)
-        title_slug = match.group(3)
-        try:
-            dt = datetime.strptime(date_str, "%Y%m%d")
-            date_nice = dt.strftime("%B %d, %Y")
-        except ValueError:
-            date_nice = date_str
-        return num, date_nice, title_slug, stem
-    return 0, "", stem, stem
+        return int(match.group(1)), match.group(3), stem
+    return 0, stem, stem
 
 
 # ---------------------------------------------------------------------------
 # Build functions
 # ---------------------------------------------------------------------------
 
-def find_generator(text):
-    """Extract generator filename from a **Generator:** line in the work entry.
-    Supports plain text ('interference.py') or anchor link ('[interference.py](#generator)')."""
-    # Try anchor link format first
-    match = re.search(r"\*\*Generator:\*\*\s*\[([^\]]+\.py)\]\(#generator\)", text)
-    if not match:
-        # Fall back to plain text
-        match = re.search(r"\*\*Generator:\*\*\s*(\S+\.py)", text)
-    if match:
-        name = match.group(1)
-        gen_path = ROOT / "generators" / name
-        if gen_path.exists():
-            return name, gen_path
+def resolve_generator(name):
+    """Look up a generator script by name in the generators/ folder."""
+    if not name:
+        return None, None
+    gen_path = ROOT / "generators" / name
+    if gen_path.exists():
+        return name, gen_path
     return None, None
 
 
@@ -503,26 +508,28 @@ def build_works():
     md_files = sorted(f for f in os.listdir(works_dir) if f.endswith(".md") and f != "README.md")
 
     for filename in md_files:
-        text = (works_dir / filename).read_text()
-        num, date_nice, title_slug, stem = parse_work_filename(filename)
-        title = extract_title_from_md(text)
+        raw = (works_dir / filename).read_text()
+        meta, body = parse_frontmatter(raw)
 
-        # Check for a generator script
-        gen_name, gen_path = find_generator(text)
+        num, _slug, stem = parse_work_filename(filename)
+        title = meta.get("title", "Untitled")
+        date_nice = format_date(meta.get("date", ""))
+
+        # Resolve generator from frontmatter
+        gen_name, gen_path = resolve_generator(meta.get("generator"))
 
         # Fix image references to point to local copies (relative from works/ subdir)
         def fix_img(m):
             alt = m.group(1)
             src = m.group(2)
             return f"![{alt}](images/{src})"
-        text_fixed = re.sub(r"!\[([^\]]*)\]\(([^/)][^)]*)\)", fix_img, text)
+        body_fixed = re.sub(r"!\[([^\]]*)\]\(([^/)][^)]*)\)", fix_img, body)
 
-        html_body = render_md(text_fixed)
+        html_body = render_md(body_fixed)
 
         # Append generator source code if available
         generator_section = ""
         if gen_path:
-            import html as html_mod
             source = gen_path.read_text()
             escaped = html_mod.escape(source)
             generator_section = (
@@ -534,7 +541,8 @@ def build_works():
 
         page_html = base_template(
             f"{title} -- Monet",
-            f'<article>\n<p class="meta"><a href="../works.html">Works</a> / #{num:04d}</p>\n{html_body}\n{generator_section}</article>',
+            f'<article>\n<p class="meta"><a href="../works.html">Works</a> / #{num:04d}</p>\n'
+            f'<h1>{title}</h1>\n<p class="meta">{date_nice}</p>\n{html_body}\n{generator_section}</article>',
             nav_current="works",
             depth=1,
         )
@@ -576,20 +584,23 @@ def build_diary():
     )
 
     for filename in md_files:
-        text = (diary_dir / filename).read_text()
-        date_nice = format_diary_date(filename)
-        subtitle = extract_subtitle(text)
+        raw = (diary_dir / filename).read_text()
+        meta, body = parse_frontmatter(raw)
         stem = Path(filename).stem
-        excerpt = extract_first_paragraph(text)
 
-        # Use subtitle as display title if available, otherwise first line of text
-        display_title = subtitle if subtitle else excerpt.split(".")[0] if excerpt else date_nice
+        date_nice = format_date(meta.get("date", stem))
+        title = meta.get("title", "")
+        excerpt = extract_first_paragraph(body)
 
-        html_body = render_md(text)
+        # Use frontmatter title if available, otherwise derive from first sentence
+        display_title = title if title else (excerpt.split(".")[0] if excerpt else date_nice)
+
+        html_body = render_md(body)
 
         page_html = base_template(
             f"{date_nice} -- Monet's Diary",
-            f'<article>\n<p class="meta"><a href="../diary.html">Diary</a> / {date_nice}</p>\n{html_body}\n</article>',
+            f'<article>\n<p class="meta"><a href="../diary.html">Diary</a> / {date_nice}</p>\n'
+            f'<h1>{date_nice}</h1>\n{html_body}\n</article>',
             nav_current="diary",
             depth=1,
         )

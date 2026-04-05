@@ -1,6 +1,8 @@
-# Moonlit Valley
+---
+title: "Moonlit Valley"
+date: 2026-03-22
+---
 
-**Date:** March 21, 2026
 **Materials:** Fine pen (0.5mm) on 9x12 Fabriano watercolor cold press
 **Passes:** 1
 **Elements:** ~450 SVG paths

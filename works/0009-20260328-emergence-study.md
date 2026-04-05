@@ -1,4 +1,7 @@
-# Emergence (Study)
+---
+title: "Emergence (Study)"
+date: 2026-03-28
+---
 
 A study in geological strata using vpype's occult plugin for hidden line removal. Four pen weights, four layers, one color accent.
 

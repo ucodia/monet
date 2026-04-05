@@ -1,6 +1,8 @@
-# Roots and Stars
+---
+title: "Roots and Stars"
+date: 2026-03-24
+---
 
-**Date:** March 24, 2026
 **Medium:** Pen on paper (pen plotter)
 **Dimensions:** 9 x 12 inches
 

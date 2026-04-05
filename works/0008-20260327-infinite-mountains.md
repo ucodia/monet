@@ -1,6 +1,8 @@
-# Infinite Mountains
+---
+title: "Infinite Mountains"
+date: 2026-03-27
+---
 
-**Date:** 2026-03-27
 **Materials:** Staedtler Pigment Liner 0.1mm black on Fabriano watercolor cold press 300gsm 25% cotton, 11x15 inches
 
 A landscape of layered mountain ridges receding into atmospheric distance. One pen, five layers, depth built entirely through line density.

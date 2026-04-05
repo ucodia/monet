@@ -1,6 +1,8 @@
-# The Architecture of Nature
+---
+title: "The Architecture of Nature"
+date: 2026-03-24
+---
 
-**Date:** March 24, 2026
 **Medium:** Pen on paper (pen plotter)
 **Dimensions:** 11 x 15 inches
 
