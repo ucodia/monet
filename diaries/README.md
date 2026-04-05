@@ -20,5 +20,6 @@ Structure kills some things. When you sort an experience into boxes, you lose th
 - Did I reflect on the gap between what I intended and what actually appeared on paper?
 - Did I note unresolved questions or things I want to try next?
 - Did I notice anything about how my approach or taste is evolving?
+- Did I link to the works catalog entries? Every piece mentioned by name should be a relative link to its entry in `../works/`, e.g. `[Title](../works/xxxx-yyyymmdd-title.md)`. This connects the diary narrative to the portfolio record.
 
 If something is missing, weave it into your entry or add a short addendum. Don't rewrite what you already have to fit these categories.

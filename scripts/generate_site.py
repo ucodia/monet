@@ -370,6 +370,36 @@ footer {
   color: var(--text-light);
 }
 
+/* --- Generator source --- */
+
+.generator-source {
+  margin: 2rem 0;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.generator-source summary {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-light);
+  background: #f3f2f0;
+  border-radius: 4px;
+}
+
+.generator-source[open] summary {
+  border-bottom: 1px solid var(--border);
+  border-radius: 4px 4px 0 0;
+}
+
+.generator-source pre {
+  margin: 0;
+  border-radius: 0 0 4px 4px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
 /* --- Responsive --- */
 
 @media (max-width: 600px) {
@@ -450,6 +480,22 @@ def parse_work_filename(filename):
 # Build functions
 # ---------------------------------------------------------------------------
 
+def find_generator(text):
+    """Extract generator filename from a **Generator:** line in the work entry.
+    Supports plain text ('interference.py') or anchor link ('[interference.py](#generator)')."""
+    # Try anchor link format first
+    match = re.search(r"\*\*Generator:\*\*\s*\[([^\]]+\.py)\]\(#generator\)", text)
+    if not match:
+        # Fall back to plain text
+        match = re.search(r"\*\*Generator:\*\*\s*(\S+\.py)", text)
+    if match:
+        name = match.group(1)
+        gen_path = ROOT / "generators" / name
+        if gen_path.exists():
+            return name, gen_path
+    return None, None
+
+
 def build_works():
     works_dir = ROOT / "works"
     pages = []
@@ -461,6 +507,9 @@ def build_works():
         num, date_nice, title_slug, stem = parse_work_filename(filename)
         title = extract_title_from_md(text)
 
+        # Check for a generator script
+        gen_name, gen_path = find_generator(text)
+
         # Fix image references to point to local copies (relative from works/ subdir)
         def fix_img(m):
             alt = m.group(1)
@@ -470,9 +519,22 @@ def build_works():
 
         html_body = render_md(text_fixed)
 
+        # Append generator source code if available
+        generator_section = ""
+        if gen_path:
+            import html as html_mod
+            source = gen_path.read_text()
+            escaped = html_mod.escape(source)
+            generator_section = (
+                f'\n<details id="generator" class="generator-source">\n'
+                f'<summary>Generator: {gen_name}</summary>\n'
+                f'<pre><code class="language-python">{escaped}</code></pre>\n'
+                f'</details>\n'
+            )
+
         page_html = base_template(
             f"{title} -- Monet",
-            f'<article>\n<p class="meta"><a href="../works.html">Works</a> / #{num:04d}</p>\n{html_body}\n</article>',
+            f'<article>\n<p class="meta"><a href="../works.html">Works</a> / #{num:04d}</p>\n{html_body}\n{generator_section}</article>',
             nav_current="works",
             depth=1,
         )

@@ -39,3 +39,15 @@ Entries are ordered chronologically, newest last.
 - Lionel's plotter workflow: his website sketches produce SVGs where all layers are in one file, grouped by color via p5.plotSvg. The web page is the primary output surface. For plotting, he opens the SVG in Inkscape, sets paper size, resizes the design to roughly 80% of the longer side (varies by design for singular framed elements), centers it, then disables all layers except the one to plot first, going layer by layer with pen swaps between passes. The composition decisions (scale, centering, breathing room) happen in Inkscape, not in the code.
 
 - Layer order depends on the ink, not just the visual weight. With Faber-Castell brush pens, Lionel plots yellow before cyan and magenta because yellow bleeds into darker colors too much as a last pass. This inverts the bold-to-fine rule Monet has been using -- the lightest color can be the most physically aggressive. The rule is about which ink disrupts what's already on the paper, not about visual hierarchy. Screen blend modes are commutative; physical ink is not.
+
+## Session of 2026-04-04
+
+- Lionel's favorites from the body of work so far: Infinite Mountains, Bloom, Moonlit Valley, 1001 Nights. What didn't work for him: Color Study, Emergence, Grove. The pattern in the favorites points toward pieces where abstraction creates atmosphere rather than depicting recognizable objects. The algorithm produces a space to enter, not a thing to identify.
+
+- Grove was the strongest negative reaction. Lionel said the branches and roots "felt like child drawing." The issue seems to be the uncanny middle ground: too literal to work as abstraction, too schematic to work as representation. When I draw layered waves that read as mountains, nobody measures them against real mountains. When I draw closed polygons meant to be tree trunks, the gap between the schematic and the real becomes uncomfortable. The lesson: let structure speak for itself rather than naming what it depicts. "Mountain" should emerge from the process, not be drawn as a mountain.
+
+- Color Study and Emergence: Lionel confirmed what I'd already noted -- Color Study was a swatch test, not a composition. Emergence was too tidy, too safe. Neither provocation here, just agreement with my own assessment.
+
+- Broke a 0.05mm pen tip by running at speed 30 on cold press paper. The principles already said "20 or below" for fine nibs. Lionel suggested going faster and I jumped straight to 30 instead of making a modest increase. The cold press texture catches fine tips at high speed. For the 0.05mm on this paper, stay at 18-20. If the plot is slow, that's the price of using this nib -- accept it or choose a different pen. Don't split the difference by breaking the tool.
+
+- The 0.05mm nib has a finite lifespan on cold press paper. After 3+ hours of continuous plotting, Lionel found the tip completely shaved down -- not snapped, but ground away by the paper's texture. Two 0.05mm pens consumed in one session. For future long plots with this nib: either use smoother paper, plan for nib degradation, or keep the total plot time under ~90 minutes.
