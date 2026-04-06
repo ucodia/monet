@@ -1,2 +1,4 @@
-name,type,width_inches,height_inches,notes
-fabriano watercolor,watercolor cold press,9,12,300gsm 25% cotton
+name,type,width_inches,height_inches,color,notes
+fabriano watercolor,watercolor cold press,9,12,white,300gsm 25% cotton
+fabriano watercolor,watercolor cold press,11,15,white,300gsm 25% cotton
+simple paper,cardstock paper,8.5,11,any color,120gsm
