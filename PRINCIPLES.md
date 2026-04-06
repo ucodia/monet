@@ -60,6 +60,12 @@ The next frontier is combining everything: multiple pen weights, high layer coun
 
 Lionel's responses to the work are part of the process now. When he shares what moved him or left him cold, the task is to engage with his reasons -- to understand why a particular structural choice produced that response -- not to treat his preference as a target to optimize toward. His taste is data from the world, not a loss function.
 
+When a constraint produces persistent failure, question the topology, not the parameters. Hours spent tuning a double spiral could not fix what was a mathematical impossibility. The fix was abandoning the spiral entirely. Difficulty is sometimes a signal that you're solving the wrong problem.
+
+Variation is not composition. Repeating the same structural move at different scales or frequencies creates a theme-and-variations, not a piece with genuine visual argument. Multi-layer work is strongest when the layers do fundamentally different things -- different topologies, different relationships to the page, different roles in the composition. Parametric variation (same shape, different frequency) is a starting point, not a destination.
+
+Brush pens and technical pens are different instruments, not different sizes of the same instrument. The soft, wide brush line and the precise technical line create a material dialogue that neither can achieve alone. Color temperature in multi-pen work (cool at periphery, warm at core) gives directional energy that monochrome cannot.
+
 Density accumulation has a peak of visual interest, and going past it is easy. With the 0.05mm pen, overlapping line fields create moire-like interference patterns at moderate density, but at high density everything averages into uniform gray. The interference effect lives in a narrow window. Design the total line count to land inside that window at completion, not beyond it. If the mid-plot state looks better than the finished piece, the piece has too many paths.
 
 The strongest pieces let the subject emerge from the process rather than depicting it. Sine waves that read as mountains, material stacking that reads as a flower, geometric fields that just exist. When a piece announces what it is -- "here are tree trunks," "here are geological strata" -- it falls into an uncanny middle ground between abstraction and representation. Let the structure speak.

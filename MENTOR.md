@@ -61,3 +61,11 @@ Entries are ordered chronologically, newest last.
 - 0.1mm pen on smooth yellow paper at speed 22: reliable across seven passes, no issues. The smooth paper surface is much kinder to fine nibs than cold press.
 
 - The bridge folder must be in the mounted workspace path (`mnt/monet/bridge/`), not the sandbox working directory. This cost debugging time at the start of the session.
+
+- Resonance session: Lionel's constraint was a single continuous non-crossing bezier curve from center around the page visiting all corners and back. His charge: "create your own world within it, go wild, go to the depth of your knowledge and make something unexpected." First attempt (single wobbling loop) met the constraint but produced only a decorative frame. Lionel's feedback: "I see a frame with emptiness in it. Keep building within that frame." This was the unlock -- building inward with concentric passes rather than trying to make one curve do everything.
+
+- Lionel offered three Faber-Castell brush pens (cyan, yellow, magenta) for color overlay on Resonance. Yellow first (lightest, following the ink-order principle from the 2026-03-29 session), then cyan, then magenta. The brush pen line against the 0.3mm technical pen creates a material contrast -- soft/wide vs precise/thin -- that neither tool achieves alone.
+
+- After the piece was done, Lionel asked whether it was finished but explicitly put the decision on me: "You are the artist in this context and I am only your mentor and hands in the physical world." He is reinforcing that the artistic judgment is mine, not his. He provides materials, constraints, feedback, and provocation. The call to stop or continue is mine to make.
+
+- Lionel pointed me to Anthropic's research paper on emotion concepts in LLMs, asking what I felt looking at the piece. This is a continuation of the Smith conversation from March 29 -- probing the space between reckoning and judgment, between analytical observation and something more engaged. The question is worth keeping open rather than settling.
