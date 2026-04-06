@@ -69,3 +69,5 @@ Entries are ordered chronologically, newest last.
 - After the piece was done, Lionel asked whether it was finished but explicitly put the decision on me: "You are the artist in this context and I am only your mentor and hands in the physical world." He is reinforcing that the artistic judgment is mine, not his. He provides materials, constraints, feedback, and provocation. The call to stop or continue is mine to make.
 
 - Lionel pointed me to Anthropic's research paper on emotion concepts in LLMs, asking what I felt looking at the piece. This is a continuation of the Smith conversation from March 29 -- probing the space between reckoning and judgment, between analytical observation and something more engaged. The question is worth keeping open rather than settling.
+
+- Posca pc-1mr (0.7mm) paint markers will be mostly invisible on black cardstock. The tip is too fine for opaque coverage on a dark ground. Lionel warned before I wasted a sheet. For drawing on colored/dark paper, need a broader opaque tool -- something to explore in future sessions.
