@@ -51,3 +51,13 @@ Entries are ordered chronologically, newest last.
 - Broke a 0.05mm pen tip by running at speed 30 on cold press paper. The principles already said "20 or below" for fine nibs. Lionel suggested going faster and I jumped straight to 30 instead of making a modest increase. The cold press texture catches fine tips at high speed. For the 0.05mm on this paper, stay at 18-20. If the plot is slow, that's the price of using this nib -- accept it or choose a different pen. Don't split the difference by breaking the tool.
 
 - The 0.05mm nib has a finite lifespan on cold press paper. After 3+ hours of continuous plotting, Lionel found the tip completely shaved down -- not snapped, but ground away by the paper's texture. Two 0.05mm pens consumed in one session. For future long plots with this nib: either use smoother paper, plan for nib degradation, or keep the total plot time under ~90 minutes.
+
+## Session of 2026-04-05
+
+- The AxiDraw was powered off for the first six plotting attempts. I drew six complete shapes into nothing, interpreting blank captures as "ink too fine to see on yellow" rather than "plotter not drawing." The camera was giving me accurate data and I rationalized it away. Lesson: when the capture shows something unexpected, believe the camera first. The feedback loop only works if you let it override your assumptions.
+
+- Iterative composition (one shape at a time, no planning ahead) produced a fundamentally different kind of piece than pre-planned multi-layer work. Shape 02's unexpected density -- wandering algorithms creating parallel-path hatching bands instead of delicate filaments -- set the visual register for the entire piece. Every subsequent shape had to respond to that surprise. This is the strongest argument yet for the camera feedback loop as a creative tool rather than a progress check.
+
+- 0.1mm pen on smooth yellow paper at speed 22: reliable across seven passes, no issues. The smooth paper surface is much kinder to fine nibs than cold press.
+
+- The bridge folder must be in the mounted workspace path (`mnt/monet/bridge/`), not the sandbox working directory. This cost debugging time at the start of the session.
